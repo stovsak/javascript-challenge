@@ -32,23 +32,28 @@ button.on("click", function() {
     // get value property of the input date, state and shape
     var inputValue = inputElement.property("value")
     // filter data with datetime equal to iput value
-    var filteredData = tableData.filter(sighting => 
-        sighting.datetime === inputValue ||
-        sighting.city === inputValue ||
-        sighting.state === inputValue ||
-        sighting.country === inputValue ||
-        sighting.shape === inputValue);
+    var filteredData = tableData.filter(sighting => sighting.datetime === inputValue ||
+                                                    sighting.city === inputValue ||
+                                                    sighting.state === inputValue ||
+                                                    sighting.country === inputValue ||
+                                                    sighting.shape === inputValue);
 
-    console.log(selections);
+    console.log(filteredData);
+
+    filteredData.forEach(function(selections) {
+
+    
     // append one table row 'tr' for each ufo sighting 
-    var row = tbody.append("tr");
-    // use object.entries to console.log each ufo sighting
+        var row = tbody.append("tr");
+
+    // use object.entries to console.log each UFO value
     Object.entries(ufoSighting).forEach(function([key, value]) {
         console.log(key, value);
         // append cell to the row for each value
         var cell = row.append("td");
         cell.text(value);
     });
+
 });
 });
 
